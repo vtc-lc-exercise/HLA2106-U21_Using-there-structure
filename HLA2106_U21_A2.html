@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HLA2106: Unit 21 - Using there-structure</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideIn 0.6s ease-out;
+            backdrop-filter: blur(10px);
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .title-page {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        h1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            animation: fadeInDown 0.8s ease-out;
+            font-weight: 700;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h2 {
+            color: #764ba2;
+            font-size: 2em;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+            font-weight: 600;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .icon-float {
+            font-size: 4em;
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+            margin: 20px 0;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .start-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 20px 60px;
+            font-size: 1.4em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            animation: pulse 2s infinite;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .start-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .start-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .start-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); }
+            50% { box-shadow: 0 10px 50px rgba(102, 126, 234, 0.7); }
+        }
+        
+        .section-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            animation: slideInRight 0.6s ease-out;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .question-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border-left: 6px solid #667eea;
+            animation: zoomIn 0.5s ease-out;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .question-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .question-text {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .options {
+            margin: 20px 0;
+        }
+        
+        .option {
+            background: white;
+            padding: 18px;
+            margin: 12px 0;
+            border-radius: 12px;
+            border: 3px solid #e0e0e0;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            transition: width 0.4s;
+            z-index: 0;
+        }
+        
+        .option:hover {
+            border-color: #667eea;
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .option:hover::before {
+            width: 100%;
+        }
+        
+        .option > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .option.selected {
+            animation: shake 0.5s;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        
+        .option.correct {
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+            color: white;
+            border-color: #4caf50;
+            animation: correctPulse 0.6s;
+            transform: scale(1);
+        }
+        
+        @keyframes correctPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .option.wrong {
+            background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+            color: white;
+            border-color: #f44336;
+            animation: wrongShake 0.6s;
+        }
+        
+        @keyframes wrongShake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+        
+        .feedback {
+            margin-top: 15px;
+            padding: 20px;
+            border-radius: 12px;
+            display: none;
+            font-weight: 500;
+            animation: slideDown 0.5s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 200px;
+            }
+        }
+        
+        .feedback.show {
+            display: block;
+        }
+        
+        .feedback.correct {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            color: #155724;
+            border: 2px solid #4caf50;
+        }
+        
+        .feedback.wrong {
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            color: #721c24;
+            border: 2px solid #f44336;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 20px;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            font-weight: 600;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+        }
+        
+        .btn:disabled {
+            background: linear-gradient(135deg, #ccc 0%, #999 100%);
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        .step-container {
+            display: flex;
+            gap: 30px;
+            min-height: 400px;
+            animation: fadeIn 0.6s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .step-left {
+            flex: 1;
+        }
+        
+        .step-right {
+            flex: 1;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8efff 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border: 3px dashed #667eea;
+            box-shadow: inset 0 0 20px rgba(102, 126, 234, 0.1);
+            animation: slideInLeft 0.6s ease-out;
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .completed-step {
+            padding: 18px;
+            margin-bottom: 15px;
+            background: white;
+            border-radius: 12px;
+            border-left: 5px solid #4caf50;
+            animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 3px 15px rgba(76, 175, 80, 0.2);
+        }
+        
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .completed-step .step-label {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+        
+        .completed-step .step-answer {
+            color: #4caf50;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+        
+        .sentence-display {
+            font-size: 1.3em;
+            padding: 25px;
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 3px solid #667eea;
+            line-height: 1.8;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+            animation: bounceIn 0.8s;
+        }
+        
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .blank {
+            display: inline-block;
+            min-width: 220px;
+            border-bottom: 3px solid #667eea;
+            text-align: center;
+            color: #667eea;
+            font-weight: 700;
+            animation: blink 2s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .sparkle {
+            display: inline-block;
+            animation: sparkle 1.5s infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        
+        @media (max-width: 768px) {
+            .step-container {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Title Page -->
+    <div id="titlePage" class="container">
+        <div class="title-page">
+            <div class="icon-float">📚</div>
+            <h1>HLA2106: Workplace Writing II</h1>
+            <h2>Unit 21: Using there-structure</h2>
+            <p style="font-size: 1.2em; color: #666; margin: 25px 0; animation: fadeInUp 0.8s ease-out 0.4s both;">
+                Master the subject-verb agreement and the tense usage with the there-structure in hospitality contexts.
+            </p>
+            <button class="start-btn" onclick="startExercise()">
+                <span style="position: relative; z-index: 1;">🚀 Start Exercise</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Section 1 -->
+    <div id="section1" class="container hidden">
+        <div class="section-header">
+            <h2 style="color: white; margin: 0;">📝 Section 1: Subject-Verb Agreement</h2>
+            <p style="margin-top: 10px; opacity: 0.9;">Choose the correct form to complete each sentence.</p>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress1" style="width: 0%"></div>
+        </div>
+        <div id="s1Questions"></div>
+        <div class="nav-buttons">
+            <button class="btn" onclick="goToTitle()">← Back to Title</button>
+            <button class="btn" id="s1NextBtn" disabled>Next Section →</button>
+        </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div id="section2" class="container hidden">
+        <div class="section-header">
+            <h2 style="color: white; margin: 0;">🎯 Section 2: Tense and Agreement</h2>
+            <p style="margin-top: 10px; opacity: 0.9;">Follow the step-by-step guide to complete each sentence.</p>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress2" style="width: 0%"></div>
+        </div>
+        <div id="s2Content"></div>
+        <div class="nav-buttons">
+            <button class="btn" onclick="goToSection1()">← Back to Section 1</button>
+            <button class="btn" id="s2NextBtn" disabled>Next Question →</button>
+        </div>
+    </div>
+
+    <script>
+        // Section 1 Data
+        const section1Questions = [
+            {
+                sentence: "_______ a business centre on the second floor.",
+                options: [
+                    { text: "a) There is", correct: true },
+                    { text: "b) There are", correct: false, explanation: "Wrong. 'A business centre' is singular, so we use 'There is'." },
+                    { text: "c) It is", correct: false, explanation: "Wrong. We use 'There is/are' to indicate existence or location, not 'It is'." }
+                ]
+            },
+            {
+                sentence: "Last month, _______ three conference rooms available in our hotel.",
+                options: [
+                    { text: "a) there is", correct: false, explanation: "Wrong. 'Three conference rooms' is plural and we need past tense. Use 'there were'." },
+                    { text: "b) there was", correct: false, explanation: "Wrong. 'Three conference rooms' is plural, so we need 'were', not 'was'." },
+                    { text: "c) there were", correct: true }
+                ]
+            },
+            {
+                sentence: "_______ a fitness centre and a swimming pool on the rooftop since 2022.",
+                options: [
+                    { text: "a) There has been", correct: false, explanation: "Wrong. We have TWO things (fitness centre AND swimming pool), so the subject is plural. Use 'There have been'." },
+                    { text: "b) There have been", correct: true },
+                    { text: "c) There is", correct: false, explanation: "Wrong. The time phrase 'since 2022' requires present perfect tense, and the subject is plural. Use 'There have been'." }
+                ]
+            },
+            {
+                sentence: "Yesterday, _______ complimentary breakfast service for all guests.",
+                options: [
+                    { text: "a) there is", correct: false, explanation: "Wrong. 'Yesterday' indicates past time, so we need past tense 'there was'." },
+                    { text: "b) there was", correct: true },
+                    { text: "c) there were", correct: false, explanation: "Wrong. 'Breakfast service' is singular, so we use 'was', not 'were'." }
+                ]
+            },
+            {
+                sentence: "_______ several complaints about the noise this week.",
+                options: [
+                    { text: "a) There has been", correct: false, explanation: "Wrong. 'Several complaints' is plural, so we need 'There have been'." },
+                    { text: "b) There have been", correct: true },
+                    { text: "c) There are", correct: false, explanation: "Wrong. 'This week' with ongoing relevance requires present perfect 'There have been', not simple present." }
+                ]
+            },
+            {
+                sentence: "Currently, _______ two restaurants and a café in the hotel lobby.",
+                options: [
+                    { text: "a) there is", correct: false, explanation: "Wrong. We have multiple places (two restaurants AND a café), so the subject is plural. Use 'there are'." },
+                    { text: "b) there was", correct: false, explanation: "Wrong. 'Currently' means now (present time), so we need present tense 'there are'." },
+                    { text: "c) there are", correct: true }
+                ]
+            }
+        ];
+
+        // Section 2 Data
+        const section2Questions = [
+            {
+                sentence: "_______ a spa and wellness centre on the ground floor since 2020.",
+                steps: [
+                    {
+                        label: "A. What tense should you use?",
+                        options: [
+                            { text: "a) simple present", correct: false, explanation: "Wrong. The phrase 'since 2020' indicates an action that started in the past and continues to the present, which requires present perfect tense." },
+                            { text: "b) simple past", correct: false, explanation: "Wrong. We use present perfect (not simple past) when something started in the past and continues to now, especially with 'since'." },
+                            { text: "c) present perfect", correct: true }
+                        ],
+                        correctAnswer: "present perfect"
+                    },
+                    {
+                        label: "B. Is the subject singular or plural?",
+                        options: [
+                            { text: "a) singular", correct: true },
+                            { text: "b) plural", correct: false, explanation: "Wrong. 'A spa and wellness centre' functions as ONE combined facility, making it singular." }
+                        ],
+                        correctAnswer: "singular"
+                    },
+                    {
+                        label: "C. Complete the blank:",
+                        options: [
+                            { text: "a) There is", correct: false, explanation: "Wrong. This is present tense, but we need present perfect because of 'since 2020'." },
+                            { text: "b) There was", correct: false, explanation: "Wrong. This is past tense. We need present perfect (has/have been) with 'since 2020'." },
+                            { text: "c) There has been", correct: true },
+                            { text: "d) There have been", correct: false, explanation: "Wrong. The subject is singular, so we use 'has been', not 'have been'." }
+                        ],
+                        correctAnswer: "There has been"
+                    }
+                ]
+            },
+            {
+                sentence: "Last year, _______ only two meeting rooms in this hotel.",
+                steps: [
+                    {
+                        label: "A. What tense should you use?",
+                        options: [
+                            { text: "a) simple present", correct: false, explanation: "Wrong. 'Last year' is a finished past time, so we need simple past tense." },
+                            { text: "b) simple past", correct: true },
+                            { text: "c) present perfect", correct: false, explanation: "Wrong. Present perfect is used for actions connected to the present, but 'last year' is a finished past time requiring simple past tense." }
+                        ],
+                        correctAnswer: "simple past"
+                    },
+                    {
+                        label: "B. Is the subject singular or plural?",
+                        options: [
+                            { text: "a) singular", correct: false, explanation: "Wrong. 'Two meeting rooms' is clearly plural (more than one)." },
+                            { text: "b) plural", correct: true }
+                        ],
+                        correctAnswer: "plural"
+                    },
+                    {
+                        label: "C. Complete the blank:",
+                        options: [
+                            { text: "a) There are", correct: false, explanation: "Wrong. This is present tense, but we need past tense because of 'last year'." },
+                            { text: "b) There was", correct: false, explanation: "Wrong. 'Two meeting rooms' is plural, so we use 'were', not 'was'." },
+                            { text: "c) There were", correct: true },
+                            { text: "d) There have been", correct: false, explanation: "Wrong. We need simple past 'were', not present perfect, because 'last year' is a completed past time." }
+                        ],
+                        correctAnswer: "There were"
+                    }
+                ]
+            },
+            {
+                sentence: "_______ a 24-hour front desk service at our hotel.",
+                steps: [
+                    {
+                        label: "A. What tense should you use?",
+                        options: [
+                            { text: "a) simple present", correct: true },
+                            { text: "b) simple past", correct: false, explanation: "Wrong. There's no past time indicator. We're describing a current, ongoing service." },
+                            { text: "c) present perfect", correct: false, explanation: "Wrong. Present perfect is for actions with past-to-present connection. This is a simple statement of current fact, requiring simple present tense." }
+                        ],
+                        correctAnswer: "simple present"
+                    },
+                    {
+                        label: "B. Is the subject singular or plural?",
+                        options: [
+                            { text: "a) singular", correct: true },
+                            { text: "b) plural", correct: false, explanation: "Wrong. 'A 24-hour front desk service' is one service, making it singular." }
+                        ],
+                        correctAnswer: "singular"
+                    },
+                    {
+                        label: "C. Complete the blank:",
+                        options: [
+                            { text: "a) There is", correct: true },
+                            { text: "b) There are", correct: false, explanation: "Wrong. The subject is singular (one service), so we use 'is', not 'are'." },
+                            { text: "c) There was", correct: false, explanation: "Wrong. We need present tense 'is' to describe a current service, not past tense 'was'." },
+                            { text: "d) There has been", correct: false, explanation: "Wrong. Simple present 'There is' is correct for stating a current fact. Present perfect is unnecessary here." }
+                        ],
+                        correctAnswer: "There is"
+                    }
+                ]
+            },
+            {
+                sentence: "_______ many positive reviews about our restaurant since last month.",
+                steps: [
+                    {
+                        label: "A. What tense should you use?",
+                        options: [
+                            { text: "a) simple present", correct: false, explanation: "Wrong. 'Since last month' indicates a time period from past to present, requiring present perfect tense." },
+                            { text: "b) simple past", correct: false, explanation: "Wrong. Simple past would mean the reviews are finished. 'Since last month' shows ongoing action requiring present perfect." },
+                            { text: "c) present perfect", correct: true }
+                        ],
+                        correctAnswer: "present perfect"
+                    },
+                    {
+                        label: "B. Is the subject singular or plural?",
+                        options: [
+                            { text: "a) singular", correct: false, explanation: "Wrong. 'Many positive reviews' is clearly plural (more than one review)." },
+                            { text: "b) plural", correct: true }
+                        ],
+                        correctAnswer: "plural"
+                    },
+                    {
+                        label: "C. Complete the blank:",
+                        options: [
+                            { text: "a) There are", correct: false, explanation: "Wrong. This is present tense. We need present perfect 'have been' because of 'since last month'." },
+                            { text: "b) There were", correct: false, explanation: "Wrong. This is past tense. We need present perfect to show the reviews continue to the present." },
+                            { text: "c) There has been", correct: false, explanation: "Wrong. 'Many reviews' is plural, so we use 'have been', not 'has been'." },
+                            { text: "d) There have been", correct: true }
+                        ],
+                        correctAnswer: "There have been"
+                    }
+                ]
+            },
+            {
+                sentence: "Yesterday, _______ a special event in the ballroom.",
+                steps: [
+                    {
+                        label: "A. What tense should you use?",
+                        options: [
+                            { text: "a) simple present", correct: false, explanation: "Wrong. 'Yesterday' is past time, so we need simple past tense." },
+                            { text: "b) simple past", correct: true },
+                            { text: "c) present perfect", correct: false, explanation: "Wrong. 'Yesterday' is a specific completed past time, requiring simple past tense, not present perfect." }
+                        ],
+                        correctAnswer: "simple past"
+                    },
+                    {
+                        label: "B. Is the subject singular or plural?",
+                        options: [
+                            { text: "a) singular", correct: true },
+                            { text: "b) plural", correct: false, explanation: "Wrong. 'A special event' is one event, making it singular." }
+                        ],
+                        correctAnswer: "singular"
+                    },
+                    {
+                        label: "C. Complete the blank:",
+                        options: [
+                            { text: "a) There is", correct: false, explanation: "Wrong. This is present tense, but we need past tense because of 'yesterday'." },
+                            { text: "b) There was", correct: true },
+                            { text: "c) There were", correct: false, explanation: "Wrong. 'A special event' is singular, so we use 'was', not 'were'." },
+                            { text: "d) There has been", correct: false, explanation: "Wrong. We need simple past 'was', not present perfect, because 'yesterday' is a finished past time." }
+                        ],
+                        correctAnswer: "There was"
+                    }
+                ]
+            },
+            {
+                sentence: "_______ no parking spaces available at the moment.",
+                steps: [
+                    {
+                        label: "A. What tense should you use?",
+                        options: [
+                            { text: "a) simple present", correct: true },
+                            { text: "b) simple past", correct: false, explanation: "Wrong. 'At the moment' means right now (present time), so we need simple present tense." },
+                            { text: "c) present perfect", correct: false, explanation: "Wrong. This is a simple statement about the current situation, requiring simple present tense, not present perfect." }
+                        ],
+                        correctAnswer: "simple present"
+                    },
+                    {
+                        label: "B. Is the subject singular or plural?",
+                        options: [
+                            { text: "a) singular", correct: false, explanation: "Wrong. 'Parking spaces' is plural (multiple spaces), even though there are zero of them." },
+                            { text: "b) plural", correct: true }
+                        ],
+                        correctAnswer: "plural"
+                    },
+                    {
+                        label: "C. Complete the blank:",
+                        options: [
+                            { text: "a) There is", correct: false, explanation: "Wrong. 'Parking spaces' is plural, so we use 'are', not 'is', even with 'no'." },
+                            { text: "b) There are", correct: true },
+                            { text: "c) There was", correct: false, explanation: "Wrong. We need present tense 'are' because of 'at the moment', not past tense 'was'." },
+                            { text: "d) There have been", correct: false, explanation: "Wrong. Simple present 'There are' is correct for describing the current situation." }
+                        ],
+                        correctAnswer: "There are"
+                    }
+                ]
+            }
+        ];
+
+        // State management
+        let currentS2Question = 0;
+        let currentS2Step = 0;
+        let completedS2Steps = [];
+        let s1Completed = 0;
+        let s1AnsweredQuestions = new Set();
+        let s2Completed = 0;
+
+        // Initialise Section 1
+        function initSection1() {
+            const container = document.getElementById('s1Questions');
+            container.innerHTML = '';
+            s1Completed = 0;
+            s1AnsweredQuestions.clear();
+            document.getElementById('progress1').style.width = '0%';
+            
+            section1Questions.forEach((q, index) => {
+                const qDiv = document.createElement('div');
+                qDiv.className = 'question-box';
+                qDiv.style.animationDelay = (index * 0.1) + 's';
+                qDiv.innerHTML = `
+                    <div class="question-text"><strong>Question ${index + 1}:</strong> ${q.sentence}</div>
+                    <div class="options" id="s1q${index}">
+                        ${q.options.map((opt, i) => `
+                            <div class="option" onclick="selectS1Answer(${index}, ${i})">${opt.text}</div>
+                        `).join('')}
+                    </div>
+                    <div class="feedback" id="s1fb${index}"></div>
+                `;
+                container.appendChild(qDiv);
+            });
+            
+            document.getElementById('s1NextBtn').disabled = true;
+        }
+
+        function selectS1Answer(qIndex, optIndex) {
+            // Prevent answering the same question twice
+            if (s1AnsweredQuestions.has(qIndex)) {
+                return;
+            }
+            
+            s1AnsweredQuestions.add(qIndex);
+            
+            const question = section1Questions[qIndex];
+            const optionsDiv = document.getElementById(`s1q${qIndex}`);
+            const options = optionsDiv.querySelectorAll('.option');
+            const feedback = document.getElementById(`s1fb${qIndex}`);
+            
+            options.forEach(opt => {
+                opt.classList.remove('selected', 'correct', 'wrong');
+            });
+            
+            const selectedOption = options[optIndex];
+            const isCorrect = question.options[optIndex].correct;
+            
+            if (isCorrect) {
+                selectedOption.classList.add('correct');
+                feedback.className = 'feedback correct show';
+                feedback.innerHTML = '<span class="sparkle">✨</span> ✓ Correct! <span class="sparkle">✨</span>';
+                s1Completed++;
+                createConfetti();
+            } else {
+                selectedOption.classList.add('wrong');
+                feedback.className = 'feedback wrong show';
+                feedback.innerHTML = '✗ ' + question.options[optIndex].explanation;
+            }
+            
+            options.forEach(opt => {
+                opt.style.pointerEvents = 'none';
+            });
+            
+            updateS1Progress();
+            checkS1Complete();
+        }
+
+        function updateS1Progress() {
+            const progress = (s1Completed / section1Questions.length) * 100;
+            document.getElementById('progress1').style.width = progress + '%';
+        }
+
+        function checkS1Complete() {
+            if (s1Completed === section1Questions.length) {
+                const nextBtn = document.getElementById('s1NextBtn');
+                nextBtn.disabled = false;
+                nextBtn.onclick = goToSection2;
+                createConfetti();
+            }
+        }
+
+        function initSection2() {
+            currentS2Question = 0;
+            currentS2Step = 0;
+            completedS2Steps = [];
+            s2Completed = 0;
+            document.getElementById('progress2').style.width = '0%';
+            showS2Question();
+        }
+
+        function showS2Question() {
+            const container = document.getElementById('s2Content');
+            const question = section2Questions[currentS2Question];
+            const step = question.steps[currentS2Step];
+            
+            container.innerHTML = `
+                <div class="sentence-display">
+                    <strong>Question ${currentS2Question + 1}:</strong><br>
+                    ${question.sentence.replace('_______', '<span class="blank">___________</span>')}
+                </div>
+                <div class="step-container">
+                    <div class="step-left">
+                        <div class="question-box">
+                            <div class="question-text"><strong>${step.label}</strong></div>
+                            <div class="options" id="currentStepOptions">
+                                ${step.options.map((opt, i) => `
+                                    <div class="option" onclick="selectS2Answer(${i})">${opt.text}</div>
+                                `).join('')}
+                            </div>
+                            <div class="feedback" id="stepFeedback"></div>
+                        </div>
+                    </div>
+                    <div class="step-right">
+                        <h3 style="color: #667eea; margin-bottom: 15px;">🎯 Your Progress:</h3>
+                        <div id="completedSteps">
+                            ${completedS2Steps.length === 0 ? '<p style="color: #999; font-style: italic;">Complete each step to see your progress here.</p>' : completedS2Steps.map(cs => `
+                                <div class="completed-step">
+                                    <div class="step-label">${cs.label}</div>
+                                    <div class="step-answer">✓ ${cs.answer}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('s2NextBtn').disabled = true;
+        }
+
+        function selectS2Answer(optIndex) {
+            const question = section2Questions[currentS2Question];
+            const step = question.steps[currentS2Step];
+            const optionsDiv = document.getElementById('currentStepOptions');
+            const options = optionsDiv.querySelectorAll('.option');
+            const feedback = document.getElementById('stepFeedback');
+            
+            options.forEach(opt => {
+                opt.classList.remove('selected', 'correct', 'wrong');
+            });
+            
+            const selectedOption = options[optIndex];
+            const isCorrect = step.options[optIndex].correct;
+            
+            if (isCorrect) {
+                selectedOption.classList.add('correct');
+                feedback.className = 'feedback correct show';
+                feedback.innerHTML = '<span class="sparkle">✨</span> ✓ Correct! Moving to next step... <span class="sparkle">✨</span>';
+                
+                completedS2Steps.push({
+                    label: step.label,
+                    answer: step.correctAnswer
+                });
+                
+                options.forEach(opt => {
+                    opt.style.pointerEvents = 'none';
+                });
+                
+                createConfetti();
+                
+                setTimeout(() => {
+                    currentS2Step++;
+                    if (currentS2Step < question.steps.length) {
+                        showS2Question();
+                    } else {
+                        s2Completed++;
+                        updateS2Progress();
+                        showS2Complete();
+                    }
+                }, 1500);
+            } else {
+                selectedOption.classList.add('wrong');
+                feedback.className = 'feedback wrong show';
+                feedback.innerHTML = '✗ ' + step.options[optIndex].explanation;
+                
+                setTimeout(() => {
+                    selectedOption.classList.remove('wrong');
+                    feedback.className = 'feedback';
+                }, 3000);
+            }
+        }
+
+        function showS2Complete() {
+            const container = document.getElementById('s2Content');
+            const question = section2Questions[currentS2Question];
+            const finalAnswer = completedS2Steps[completedS2Steps.length - 1].answer;
+            
+            container.innerHTML = `
+                <div class="sentence-display" style="background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); border-color: #4caf50;">
+                    <strong>Question ${currentS2Question + 1} Complete! ✓</strong><br>
+                    ${question.sentence.replace('_______', '<span style="color: #4caf50; font-weight: bold;">' + finalAnswer + '</span>')}
+                </div>
+                <div class="step-right" style="max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); border-color: #4caf50;">
+                    <h3 style="color: #4caf50; margin-bottom: 15px;">🌟 Your Solution Path:</h3>
+                    ${completedS2Steps.map(cs => `
+                        <div class="completed-step">
+                            <div class="step-label">${cs.label}</div>
+                            <div class="step-answer">✓ ${cs.answer}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            createConfetti();
+            const nextBtn = document.getElementById('s2NextBtn');
+            nextBtn.disabled = false;
+            nextBtn.onclick = nextS2Question;
+            nextBtn.textContent = currentS2Question < section2Questions.length - 1 ? 'Next Question →' : 'Finish Exercise 🎉';
+        }
+
+        function nextS2Question() {
+            if (currentS2Question < section2Questions.length - 1) {
+                currentS2Question++;
+                currentS2Step = 0;
+                completedS2Steps = [];
+                showS2Question();
+            } else {
+                showFinalPage();
+            }
+        }
+
+        function updateS2Progress() {
+            const progress = (s2Completed / section2Questions.length) * 100;
+            document.getElementById('progress2').style.width = progress + '%';
+        }
+
+        function showFinalPage() {
+            const container = document.getElementById('s2Content');
+            container.innerHTML = `
+                <div style="text-align: center; padding: 60px 20px;">
+                    <div style="font-size: 5em; animation: float 2s ease-in-out infinite;">🎉</div>
+                    <h2 style="color: #4caf50; font-size: 2.8em; margin: 20px 0; animation: bounceIn 1s;">Congratulations!</h2>
+                    <p style="font-size: 1.4em; color: #666; margin-bottom: 30px; animation: fadeInUp 0.8s;">
+                        You have completed all exercises on using the <strong>there-structure</strong>!
+                    </p>
+                    <div style="background: linear-gradient(135deg, #f0f4ff 0%, #e8efff 100%); padding: 40px; border-radius: 20px; margin: 30px 0; animation: zoomIn 0.8s; box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);">
+                        <h3 style="color: #667eea; margin-bottom: 20px; font-size: 1.8em;">📊 Summary:</h3>
+                        <p style="font-size: 1.2em; line-height: 2; color: #333;">
+                            <span class="sparkle">✨</span> Section 1: ${section1Questions.length} questions completed<br>
+                            <span class="sparkle">✨</span> Section 2: ${section2Questions.length} questions completed<br>
+                            <span class="sparkle">✨</span> <strong>Total: ${section1Questions.length + section2Questions.length} questions mastered!</strong>
+                        </p>
+                    </div>
+                    <button class="start-btn" onclick="location.reload()" style="margin-top: 20px;">
+                        <span style="position: relative; z-index: 1;">🔄 Start Over</span>
+                    </button>
+                </div>
+            `;
+            document.getElementById('s2NextBtn').style.display = 'none';
+            createMassConfetti();
+        }
+
+        function createConfetti() {
+            const colours = ['#667eea', '#764ba2', '#4caf50', '#ff6b6b', '#ffd93d'];
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'fixed';
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.background = colours[Math.floor(Math.random() * colours.length)];
+                    confetti.style.opacity = '1';
+                    confetti.style.animation = 'confettiFall 3s linear forwards';
+                    confetti.style.zIndex = '9999';
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 30);
+            }
+        }
+
+        function createMassConfetti() {
+            const colours = ['#667eea', '#764ba2', '#4caf50', '#ff6b6b', '#ffd93d'];
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'fixed';
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.background = colours[Math.floor(Math.random() * colours.length)];
+                    confetti.style.opacity = '1';
+                    confetti.style.animation = 'confettiFall ' + (Math.random() * 2 + 2) + 's linear forwards';
+                    confetti.style.zIndex = '9999';
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 5000);
+                }, i * 20);
+            }
+        }
+        
+        // Add confetti fall animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes confettiFall {
+                to {
+                    transform: translateY(100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        function startExercise() {
+            document.getElementById('titlePage').classList.add('hidden');
+            document.getElementById('section1').classList.remove('hidden');
+            initSection1();
+        }
+
+        function goToTitle() {
+            document.getElementById('section1').classList.add('hidden');
+            document.getElementById('titlePage').classList.remove('hidden');
+        }
+
+        function goToSection1() {
+            document.getElementById('section2').classList.add('hidden');
+            document.getElementById('section1').classList.remove('hidden');
+        }
+
+        function goToSection2() {
+            document.getElementById('section1').classList.add('hidden');
+            document.getElementById('section2').classList.remove('hidden');
+            initSection2();
+        }
+    </script>
+</body>
+</html>
