@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HLA2106: Unit 21 - Using there-structure</title>
+    <!-- 引入 html2canvas 用作截圖下載功能 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
         
@@ -602,10 +604,10 @@
                 ]
             },
             {
-                sentence: "Last month, _______ three conference rooms available in our hotel.",
+                sentence: "Next month, _______ three conference rooms available in our hotel.",
                 options: [
-                    { text: "a) there were", correct: true },
-                    { text: "b) there was", correct: false, explanation: "Wrong. 'Three conference rooms' is plural, so we need 'were', not 'was'." },
+                    { text: "a) there were", correct: false, explanation: "Wrong. The time phrase 'Next month' requires the simple future tense." },
+                    { text: "b) there will be", correct: true },
                     { text: "c) there is", correct: false, explanation: "Wrong. 'Three conference rooms' is plural and we need past tense. Use 'there were'." }
                 ]
             },
@@ -618,11 +620,11 @@
                 ]
             },
             {
-                sentence: "Yesterday, _______ complimentary breakfast service for all guests.",
+                sentence: "Yesterday was our hotel's 30th anniversary.  _______ complimentary breakfast service for all guests.",
                 options: [
-                    { text: "a) there were", correct: false, explanation: "Wrong. 'Breakfast service' is singular, so we use 'was', not 'were'." },
-                    { text: "b) there is", correct: false, explanation: "Wrong. 'Yesterday' indicates past time, so we need past tense 'there was'." },
-                    { text: "c) there was", correct: true }
+                    { text: "a) There were", correct: false, explanation: "Wrong. 'Breakfast service' is singular, so we use 'was', not 'were'." },
+                    { text: "b) There is", correct: false, explanation: "Wrong. 'Yesterday' indicates past time, so we need past tense 'there was'." },
+                    { text: "c) There was", correct: true }
                 ]
             },
             {
@@ -646,13 +648,13 @@
         // Section 2 Data
         const section2Questions = [
             {
-                sentence: "_______ a spa and wellness centre on the ground floor since 2020.",
+                sentence: "_______ a spa centre on the ground floor since 2020.",
                 steps: [
                     {
                         label: "A. What tense should you use?",
                         options: [
-                            { text: "a) simple present", correct: false, explanation: "Wrong. The phrase 'since 2020' indicates an action that started in the past and continues to the present, which requires present perfect tense." },
-                            { text: "b) simple past", correct: false, explanation: "Wrong. We use present perfect (not simple past) when something started in the past and continues to now, especially with 'since'." },
+                            { text: "a) simple present", correct: false, explanation: "Wrong. The phrase 'since 2020' indicates an action that started in the past and continues to the present, which requires the present perfect tense." },
+                            { text: "b) simple past", correct: false, explanation: "Wrong. We use the present perfect (not simple past) when something started in the past and continues to now, especially with 'since'." },
                             { text: "c) present perfect", correct: true }
                         ],
                         correctAnswer: "present perfect"
@@ -661,7 +663,7 @@
                         label: "B. Is the subject singular or plural?",
                         options: [
                             { text: "a) singular", correct: true },
-                            { text: "b) plural", correct: false, explanation: "Wrong. 'A spa and wellness centre' functions as ONE combined facility, making it singular." }
+                            { text: "b) plural", correct: false, explanation: "Wrong. 'A spa centre' functions as ONE facility, making it singular." }
                         ],
                         correctAnswer: "singular"
                     },
@@ -683,9 +685,9 @@
                     {
                         label: "A. What tense should you use?",
                         options: [
-                            { text: "a) simple present", correct: false, explanation: "Wrong. 'Last year' is a finished past time, so we need simple past tense." },
+                            { text: "a) simple present", correct: false, explanation: "Wrong. 'Last year' is a finished past time, so we need the simple past tense." },
                             { text: "b) simple past", correct: true },
-                            { text: "c) present perfect", correct: false, explanation: "Wrong. Present perfect is used for actions connected to the present, but 'last year' is a finished past time requiring simple past tense." }
+                            { text: "c) present perfect", correct: false, explanation: "Wrong. The present perfect tense is used for actions connected to the present, but 'last year' is a finished past time requiring the simple past tense." }
                         ],
                         correctAnswer: "simple past"
                     },
@@ -710,14 +712,14 @@
                 ]
             },
             {
-                sentence: "_______ a 24-hour front desk service at our hotel.",
+                sentence: "Please note that _______ a 24-hour front desk service at our hotel.",
                 steps: [
                     {
                         label: "A. What tense should you use?",
                         options: [
                             { text: "a) simple present", correct: true },
                             { text: "b) simple past", correct: false, explanation: "Wrong. There's no past time indicator. We're describing a current, ongoing service." },
-                            { text: "c) present perfect", correct: false, explanation: "Wrong. Present perfect is for actions with past-to-present connection. This is a simple statement of current fact, requiring simple present tense." }
+                            { text: "c) present perfect", correct: false, explanation: "Wrong. The present perfect is for actions with past-to-present connection. This is a simple statement of current fact, requiring the simple present tense." }
                         ],
                         correctAnswer: "simple present"
                     },
@@ -732,10 +734,10 @@
                     {
                         label: "C. Complete the blank:",
                         options: [
-                            { text: "a) There is", correct: true },
-                            { text: "b) There are", correct: false, explanation: "Wrong. The subject is singular (one service), so we use 'is', not 'are'." },
-                            { text: "c) There was", correct: false, explanation: "Wrong. We need present tense 'is' to describe a current service, not past tense 'was'." },
-                            { text: "d) There has been", correct: false, explanation: "Wrong. Simple present 'There is' is correct for stating a current fact. Present perfect is unnecessary here." }
+                            { text: "a) there is", correct: true },
+                            { text: "b) there are", correct: false, explanation: "Wrong. The subject is singular (one service), so we use 'is', not 'are'." },
+                            { text: "c) there was", correct: false, explanation: "Wrong. We need present tense 'is' to describe a current service, not past tense 'was'." },
+                            { text: "d) there has been", correct: false, explanation: "Wrong. Simple present 'There is' is correct for stating a current fact. Present perfect is unnecessary here." }
                         ],
                         correctAnswer: "There is"
                     }
@@ -747,8 +749,8 @@
                     {
                         label: "A. What tense should you use?",
                         options: [
-                            { text: "a) simple present", correct: false, explanation: "Wrong. 'Since last month' indicates a time period from past to present, requiring present perfect tense." },
-                            { text: "b) simple past", correct: false, explanation: "Wrong. Simple past would mean the reviews are finished. 'Since last month' shows ongoing action requiring present perfect." },
+                            { text: "a) simple present", correct: false, explanation: "Wrong. 'Since last month' indicates a time period from past to present, requiring the present perfect tense." },
+                            { text: "b) simple past", correct: false, explanation: "Wrong. The simple past would mean the reviews are finished. 'Since last month' shows ongoing action requiring the present perfect." },
                             { text: "c) present perfect", correct: true }
                         ],
                         correctAnswer: "present perfect"
@@ -779,9 +781,9 @@
                     {
                         label: "A. What tense should you use?",
                         options: [
-                            { text: "a) simple present", correct: false, explanation: "Wrong. 'Yesterday' is past time, so we need simple past tense." },
+                            { text: "a) simple present", correct: false, explanation: "Wrong. 'Yesterday' is past time, so we need the simple past tense." },
                             { text: "b) simple past", correct: true },
-                            { text: "c) present perfect", correct: false, explanation: "Wrong. 'Yesterday' is a specific completed past time, requiring simple past tense, not present perfect." }
+                            { text: "c) present perfect", correct: false, explanation: "Wrong. 'Yesterday' is a specific completed past time, requiring the simple past tense, not the present perfect." }
                         ],
                         correctAnswer: "simple past"
                     },
@@ -796,10 +798,10 @@
                     {
                         label: "C. Complete the blank:",
                         options: [
-                            { text: "a) there is", correct: false, explanation: "Wrong. This is present tense, but we need past tense because of 'yesterday'." },
+                            { text: "a) there is", correct: false, explanation: "Wrong. This is the simple present tense, but we need the past tense because of 'yesterday'." },
                             { text: "b) there was", correct: true },
                             { text: "c) there were", correct: false, explanation: "Wrong. 'A special event' is singular, so we use 'was', not 'were'." },
-                            { text: "d) there has been", correct: false, explanation: "Wrong. We need simple past 'was', not present perfect, because 'yesterday' is a finished past time." }
+                            { text: "d) there has been", correct: false, explanation: "Wrong. We need the simple past 'was', not the present perfect, because 'yesterday' is a finished past time." }
                         ],
                         correctAnswer: "there was"
                     }
@@ -812,8 +814,8 @@
                         label: "A. What tense should you use?",
                         options: [
                             { text: "a) simple present", correct: true },
-                            { text: "b) simple past", correct: false, explanation: "Wrong. 'At the moment' means right now (present time), so we need simple present tense." },
-                            { text: "c) present perfect", correct: false, explanation: "Wrong. This is a simple statement about the current situation, requiring simple present tense, not present perfect." }
+                            { text: "b) simple past", correct: false, explanation: "Wrong. 'At the moment' means right now (present time), so we need the simple present tense." },
+                            { text: "c) present perfect", correct: false, explanation: "Wrong. This is a simple statement about the current situation, requiring the simple present tense, not the present perfect." }
                         ],
                         correctAnswer: "simple present"
                     },
@@ -830,8 +832,8 @@
                         options: [
                             { text: "a) There is", correct: false, explanation: "Wrong. 'Parking spaces' is plural, so we use 'are', not 'is', even with 'no'." },
                             { text: "b) There are", correct: true },
-                            { text: "c) There was", correct: false, explanation: "Wrong. We need present tense 'are' because of 'at the moment', not past tense 'was'." },
-                            { text: "d) There have been", correct: false, explanation: "Wrong. Simple present 'There are' is correct for describing the current situation." }
+                            { text: "c) There was", correct: false, explanation: "Wrong. We need the present tense 'are' because of 'at the moment', not the simple past tense 'was'." },
+                            { text: "d) There have been", correct: false, explanation: "Wrong. The simple present 'There are' is correct for describing the current situation." }
                         ],
                         correctAnswer: "There are"
                     }
@@ -846,6 +848,9 @@
         let s1Completed = 0;
         let s1AnsweredQuestions = new Set();
         let s2Completed = 0;
+        
+        // 記錄學生錯題
+        let studentMistakes = [];
 
         // Initialise Section 1
         function initSection1() {
@@ -875,7 +880,6 @@
         }
 
         function selectS1Answer(qIndex, optIndex) {
-            // Prevent answering the same question twice
             if (s1AnsweredQuestions.has(qIndex)) {
                 return;
             }
@@ -898,13 +902,22 @@
                 selectedOption.classList.add('correct');
                 feedback.className = 'feedback correct show';
                 feedback.innerHTML = '<span class="sparkle">✨</span> ✓ Correct! <span class="sparkle">✨</span>';
-                s1Completed++;
                 createConfetti();
             } else {
                 selectedOption.classList.add('wrong');
                 feedback.className = 'feedback wrong show';
                 feedback.innerHTML = '✗ ' + question.options[optIndex].explanation;
+                
+                // 記錄錯題
+                studentMistakes.push({
+                    section: 'Section 1',
+                    context: question.sentence.replace('_______', '_____'),
+                    wrongChoice: question.options[optIndex].text,
+                    tip: question.options[optIndex].explanation.replace('Wrong. ', '')
+                });
             }
+            
+            s1Completed++;
             
             options.forEach(opt => {
                 opt.style.pointerEvents = 'none';
@@ -1021,11 +1034,25 @@
                 feedback.className = 'feedback wrong show';
                 feedback.innerHTML = '✗ ' + step.options[optIndex].explanation;
                 
+                // 記錄錯題
+                studentMistakes.push({
+                    section: 'Section 2',
+                    context: `Sentence: ${question.sentence.replace('_______', '_____')}<br>Step: ${step.label}`,
+                    wrongChoice: step.options[optIndex].text,
+                    tip: step.options[optIndex].explanation.replace('Wrong. ', '')
+                });
+                
                 setTimeout(() => {
                     selectedOption.classList.remove('wrong');
                     feedback.className = 'feedback';
                 }, 3000);
             }
+        }
+
+        // 新增：更新 Section 2 進度條
+        function updateS2Progress() {
+            const progress = (s2Completed / section2Questions.length) * 100;
+            document.getElementById('progress2').style.width = progress + '%';
         }
 
         function showS2Complete() {
@@ -1056,9 +1083,10 @@
             nextBtn.textContent = currentS2Question < section2Questions.length - 1 ? 'Next Question →' : 'Finish Exercise 🎉';
         }
 
+        // 新增：前往下一題的邏輯
         function nextS2Question() {
-            if (currentS2Question < section2Questions.length - 1) {
-                currentS2Question++;
+            currentS2Question++;
+            if (currentS2Question < section2Questions.length) {
                 currentS2Step = 0;
                 completedS2Steps = [];
                 showS2Question();
@@ -1067,35 +1095,96 @@
             }
         }
 
-        function updateS2Progress() {
-            const progress = (s2Completed / section2Questions.length) * 100;
-            document.getElementById('progress2').style.width = progress + '%';
-        }
-
         function showFinalPage() {
             const container = document.getElementById('s2Content');
-            container.innerHTML = `
-                <div style="text-align: center; padding: 60px 20px;">
-                    <div style="font-size: 5em; animation: float 2s ease-in-out infinite;">🎉</div>
-                    <h2 style="color: #4caf50; font-size: 2.8em; margin: 20px 0; animation: bounceIn 1s;">Congratulations!</h2>
-                    <p style="font-size: 1.4em; color: #666; margin-bottom: 30px; animation: fadeInUp 0.8s;">
-                        You have completed all exercises on using the <strong>there-structure</strong>!
-                    </p>
-                    <div style="background: linear-gradient(135deg, #f0f4ff 0%, #e8efff 100%); padding: 40px; border-radius: 20px; margin: 30px 0; animation: zoomIn 0.8s; box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);">
-                        <h3 style="color: #667eea; margin-bottom: 20px; font-size: 1.8em;">📊 Summary:</h3>
-                        <p style="font-size: 1.2em; line-height: 2; color: #333;">
-                            <span class="sparkle">✨</span> Section 1: ${section1Questions.length} questions completed<br>
-                            <span class="sparkle">✨</span> Section 2: ${section2Questions.length} questions completed<br>
-                            <span class="sparkle">✨</span> <strong>Total: ${section1Questions.length + section2Questions.length} questions mastered!</strong>
-                        </p>
+            
+            // 準備錯題總結的 HTML
+            let mistakesHTML = '';
+            if (studentMistakes.length === 0) {
+                mistakesHTML = `
+                    <div class="feedback correct show" style="margin-top: 20px; text-align: center; font-size: 1.2em;">
+                        <span class="sparkle">✨</span> Perfect Score! You didn't make any mistakes! <span class="sparkle">✨</span>
                     </div>
-                    <button class="start-btn" onclick="location.reload()" style="margin-top: 20px;">
-                        <span style="position: relative; z-index: 1;">🔄 Start Over</span>
-                    </button>
+                `;
+            } else {
+                mistakesHTML = `
+                    <h3 style="color: #f44336; margin: 30px 0 15px 0; font-size: 1.6em; text-align: left;">📝 Things to remember:</h3>
+                    <div style="text-align: left;">
+                        ${studentMistakes.map((m, i) => `
+                            <div class="question-box" style="margin-bottom: 15px; padding: 20px; border-left-color: #f44336;">
+                                <div style="font-size: 0.9em; color: #666; margin-bottom: 5px;">${m.section}</div>
+                                <div style="font-weight: 600; margin-bottom: 10px;">${m.context}</div>
+                                <div style="color: #d32f2f; margin-bottom: 5px;">✗ You chose: ${m.wrongChoice}</div>
+                                <div style="color: #155724; background: #d4edda; padding: 10px; border-radius: 8px; font-size: 0.95em;">
+                                    💡 <strong>Tip:</strong> ${m.tip}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+
+            container.innerHTML = `
+                <div style="text-align: center; padding: 20px;">
+                    <!-- 呢個 div 係用嚟做截圖範圍 -->
+                    <div id="summaryCard" style="background: white; padding: 40px; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);">
+                        <div style="font-size: 4em; margin-bottom: 10px;">🎉</div>
+                        <h2 style="color: #4caf50; font-size: 2.4em; margin: 10px 0;">Congratulations!</h2>
+                        <p style="font-size: 1.2em; color: #666; margin-bottom: 25px;">
+                            You have completed all exercises on using the <strong>there-structure</strong>!
+                        </p>
+                        
+                        <div style="background: linear-gradient(135deg, #f0f4ff 0%, #e8efff 100%); padding: 25px; border-radius: 15px; margin: 20px 0; border: 2px dashed #667eea;">
+                            <h3 style="color: #667eea; margin-bottom: 15px; font-size: 1.5em;">📊 Your Summary</h3>
+                            <p style="font-size: 1.1em; line-height: 1.8; color: #333;">
+                                Section 1: ${section1Questions.length} questions completed<br>
+                                Section 2: ${section2Questions.length} questions completed<br>
+                                <strong>Total: ${section1Questions.length + section2Questions.length} questions mastered!</strong>
+                            </p>
+                        </div>
+                        
+                        ${mistakesHTML}
+                    </div>
+
+                    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                        <button class="start-btn" onclick="downloadSummary()" style="margin-top: 0; padding: 15px 40px; font-size: 1.2em; background: linear-gradient(135deg, #4caf50 0%, #45a049 100%); box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4);">
+                            <span style="position: relative; z-index: 1;">📸 Download Summary</span>
+                        </button>
+                        <button class="start-btn" onclick="location.reload()" style="margin-top: 0; padding: 15px 40px; font-size: 1.2em;">
+                            <span style="position: relative; z-index: 1;">🔄 Start Over</span>
+                        </button>
+                    </div>
                 </div>
             `;
             document.getElementById('s2NextBtn').style.display = 'none';
             createMassConfetti();
+        }
+
+        // 下載圖片功能
+        function downloadSummary() {
+            const summaryCard = document.getElementById('summaryCard');
+            const originalBoxShadow = summaryCard.style.boxShadow;
+            
+            // 截圖前暫時拎走陰影，等出嚟張圖乾淨啲
+            summaryCard.style.boxShadow = 'none';
+            
+            html2canvas(summaryCard, {
+                scale: 2, // 提高圖片清晰度
+                backgroundColor: '#ffffff',
+                useCORS: true
+            }).then(canvas => {
+                // 恢復原本嘅陰影
+                summaryCard.style.boxShadow = originalBoxShadow;
+                
+                // 將 Canvas 轉成圖片 URL
+                const image = canvas.toDataURL("image/png");
+                
+                // 建立一個隱藏嘅 <a> 標籤觸發下載
+                const link = document.createElement('a');
+                link.download = 'HLA2106_Unit21_Summary.png';
+                link.href = image;
+                link.click();
+            });
         }
 
         function createConfetti() {
