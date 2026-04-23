@@ -1160,13 +1160,21 @@
             createMassConfetti();
         }
 
-        // 下載圖片功能
+        // 下載圖片功能 (已修改：加入強制撐闊及還原功能)
         function downloadSummary() {
             const summaryCard = document.getElementById('summaryCard');
             const originalBoxShadow = summaryCard.style.boxShadow;
             
+            // 【新增】記低原本嘅闊度設定
+            const originalWidth = summaryCard.style.width;
+            const originalMaxWidth = summaryCard.style.maxWidth;
+            
             // 截圖前暫時拎走陰影，等出嚟張圖乾淨啲
             summaryCard.style.boxShadow = 'none';
+            
+            // 【新增】強制撐闊個 Container 到 800px，等手機 cap 出嚟都係電腦版比例
+            summaryCard.style.width = '800px';
+            summaryCard.style.maxWidth = '800px';
             
             html2canvas(summaryCard, {
                 scale: 2, // 提高圖片清晰度
@@ -1176,6 +1184,10 @@
                 // 恢復原本嘅陰影
                 summaryCard.style.boxShadow = originalBoxShadow;
                 
+                // 【新增】截圖完成後，即刻還原原本嘅闊度，手機畫面即刻變返正常
+                summaryCard.style.width = originalWidth;
+                summaryCard.style.maxWidth = originalMaxWidth;
+                
                 // 將 Canvas 轉成圖片 URL
                 const image = canvas.toDataURL("image/png");
                 
@@ -1184,6 +1196,12 @@
                 link.download = 'HLA2106_Unit21_Summary.png';
                 link.href = image;
                 link.click();
+            }).catch(err => {
+                // 【新增】萬一截圖失敗，都要記得還原畫面
+                summaryCard.style.boxShadow = originalBoxShadow;
+                summaryCard.style.width = originalWidth;
+                summaryCard.style.maxWidth = originalMaxWidth;
+                console.error("截圖失敗:", err);
             });
         }
 
